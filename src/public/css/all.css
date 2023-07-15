@@ -1,0 +1,92 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    color:#fff;
+    background-color: #F000CF;
+    padding: 25px;
+    text-align: center;
+    font-size: 21px;
+}
+
+header a{
+    text-decoration: none;
+    color:#fff;
+    text-transform: uppercase;
+}
+
+header img{
+    width: 200px;
+}
+
+.btn{
+    border: none;
+    background: linear-gradient(150deg,#9728FA,#B923DE,#F434DA);
+    text-decoration: none;
+    border-radius: 8px;
+    color:#fff;
+    display: flex;
+    font-size: 18px;
+    padding: 4px;
+    cursor:pointer;
+    transition: .3s;
+    margin: 0 auto;
+    margin-top:10px;
+
+    & span{
+        background-color: #111;
+        padding: 14px 24px;
+        border-radius: 6px;
+        transition: .3s;
+        color:#fff;
+
+        &:hover{
+            background: none;
+        }
+    }
+
+    &:active{
+        transform: scale(0.9);
+    }
+}
+
+.btn:hover span{
+    background: none;
+}
+
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:25px;
+}
+
+#redes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:25px;
+}
+
+@media screen and (max-width:1195px){
+    header{
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width:434px){
+    header{
+        font-size: 13px;
+    }
+}

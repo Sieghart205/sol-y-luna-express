@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="../public/css/producto.css">
+<%- include("partials/_header.ejs")%>
+
+<% data.forEach(e=>{ %>
+    <div id="producto">
+        <div class="banner">
+            <h1 class="titulo"><%= e.Producto%></h1>
+            <h2 class="subtitulo"><%= e.Descripcion%></h2>
+            <img id="img" src="../public/products/<%= e.Imagen %>" class="product-img">
+        </div>
+        <div class="info">
+            <div>
+                <div class="text">
+                    <p>Tallas: <%= e.Tallas%></p>
+                    <p>Colores: <%= e.Colores%></p>
+                    <p>Tela: <%= e.Tela%></p><br>
+                    <p class="precio">Precio: <%= e.Precio%><p>
+                    <p class="precio">Precio por mayor: <%= e.PrecioPorMayor%><p>   
+                </div> 
+                <button id="btn" class="btn" onclick="comprar(<%= e.ProductoID%>)">
+                    <span>COMPRAR</span>
+                </button>
+            </div>
+        </div>
+    </div>
+<%})%>
+<script src="../public/js/producto.js"></script>
+<%- include("partials/_footer.ejs")%>

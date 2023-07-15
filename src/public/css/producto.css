@@ -1,0 +1,69 @@
+#producto{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:25px;
+    flex-wrap: wrap;
+}
+
+.banner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 600px;
+    background-color: #e3e3e3;
+    border-radius: 25px;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+.banner::before{
+    position: absolute;
+    content: "";
+    width: 100px;
+    height: 200%;
+    background-color: #F000CF;
+    z-index: -2;
+    animation: rotate 1s linear infinite;
+}
+
+.banner::after{
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background-color: #e3e3e3;
+    width: 97%;
+    height: 97%;
+    border-radius: 15px;
+}
+
+.precio{
+    color: #F000CF;
+    font-weight: bold;
+}
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(180deg);
+    }
+}
+
+.banner img{
+    width: 80%;
+    margin-bottom: 25px;
+    border-radius: 25px;
+}
+
+
+@media screen and (max-width:930px){
+    .banner{
+        width: 350px;
+    }
+}

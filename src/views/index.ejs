@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="../public/css/index.css">
+<%- include ("partials/_header.ejs") %>
+
+<div class="slider">
+    <section>
+        <% data.forEach(e=>{ %>
+            <img src="../public/products/<%= e.Imagen %>" class="section-image">
+        <% }) %>
+    </section>
+</div>
+
+    <div id="ventajas">
+        <span class="spaces">
+            PAGO CONTRA ENTREGA<br>
+            <button id="up-modal-1" class="btn">
+                <span>VER MAS</span>
+            </button>
+        </span>
+        <span class="spaces">
+            METODOS DE PAGO<br>
+            <button id="up-modal-2" class="btn">
+                <span>VER MAS</span>
+            </button>
+        </span>
+        <span class="spaces">
+            ROPA PLUS<br>
+            <button id="up-modal-3" class="btn">
+                <span>VER MAS</span>
+            </button>
+        </span>
+        </div>
+        
+        <div id="modal-1" class="modal">
+            <div>
+                <h1>PAGO CONTRA ENTREGA</h1>
+                <P>¡Compra tu pedido ahora y pagalo cuando lo recibas en la puerta de tu casa!</P>
+                <img src="../public/icon/contraentrega.jpg" class="modal-img"><br>
+                <button class="modal-btn  btn" id="btn-modal-1"><span>X</span></button>
+            </div>
+        </div>
+        <div id="modal-2" class="modal">
+            <div>
+                <h1>METODOS DE PAGO</h1><br>
+                <h2>ELIGE TU METODO DE PAGO FAVORITO</h2><br>
+                <p><img class="icon" src="../public/icon/davivienda.png"><br>Davivienda</p><br>
+                <p><img class="icon" src="../public/icon/bancolombia.png"><br>Bancolombia</p><br>
+                <p><img class="icon" src="../public/icon/nequi.png"><br>Nequi</p><br>
+                <br>
+                <button class="modal-btn  btn" id="btn-modal-2"><span>X</span></button>
+            </div>
+        </div>
+        <div  class="modal" id="modal-3">
+            <div>
+                <h1>ROPA PLUS</h1>
+                <p>La ropa plus se tiene que comprar sobre pedido</p>
+                <img class="modal-img" src="../public/icon/plus.png"><br>
+                <button class="modal-btn  btn" id="btn-modal-3"><span>X</span></button>
+            </div>
+        </div>
+    </body>
+<script src="../public/js/index.js"></script>
+<%- include("partials/_footer.ejs")%>

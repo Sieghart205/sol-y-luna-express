@@ -1,0 +1,21 @@
+<link rel="stylesheet" href="../public/css/catalogo.css">
+<%- include ("partials/_header.ejs") %>
+<div id="productos">
+        <% data.forEach(e => { %>
+        <div class="producto">
+            <h1 class="titulo"><%= e.Producto%></h1>
+            <br>
+            <button class="btn" onclick="producto(<%= e.ProductoID %>)">
+                    <span>
+                        VER MAS
+                    </span>
+            </button>
+            <br>
+            <h2 class="descripcion"><%= e.Descripcion%></h2>
+            <br><br>
+            <img class="img" src="../public/products/<%= e.Imagen%>">
+        </div>
+    <% }) %>
+    </div>
+    <script src="../public/js/catalogo.js"></script>
+<%- include("partials/_footer.ejs")%>
