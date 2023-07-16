@@ -61,4 +61,8 @@ controller.catalogoCategoria = (req,res)=>{
     })
 }
 
+controller.admin = (req,res)=>{
+    res.render("adminLogin.ejs");
+}
+
 module.exports = controller;
