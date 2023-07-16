@@ -22,6 +22,8 @@ app.use("/",routes);
 
 app.use("/public",express.static(path.join(__dirname,"public")));
 
+app.use(express.urlencoded({extended:false}))
+
 app.listen(port,()=>{
     console.log("app funcionando en el puerto",port);
 });

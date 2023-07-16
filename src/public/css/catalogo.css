@@ -60,7 +60,7 @@
     font-size: 17px;
   }
   
-  .img {
+  .product-img {
     width: 250px;
     height: 300px;
     margin: 0 auto;
@@ -68,3 +68,18 @@
     object-fit: cover;
   }
   
+
+  #categoria{
+    width: 300px;
+    height: 40px;
+    border-radius: 15px;
+    padding: 4px;
+    margin: 15px;
+}
+
+#formulario{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

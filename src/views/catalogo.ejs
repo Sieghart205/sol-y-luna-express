@@ -1,5 +1,16 @@
 <link rel="stylesheet" href="../public/css/catalogo.css">
 <%- include ("partials/_header.ejs") %>
+<form action="catalogo" method="post" id="formulario">
+    <select name="CategoriaID" id="Categoria">
+        <option value="">Buscador</option>
+        <%categoria.forEach(e=> {%>
+            <option value="<%=e.CategoriaID%>"><%= e.Categoria%></option>
+        <%}) %>
+    </select>
+    <button type="button" class="btn" id="btnForm">
+        <span>filtrar</span>
+    </button>
+</form>
 <div id="productos">
         <% data.forEach(e => { %>
         <div class="producto">
@@ -13,7 +24,7 @@
             <br>
             <h2 class="descripcion"><%= e.Descripcion%></h2>
             <br><br>
-            <img class="img" src="../public/products/<%= e.Imagen%>">
+            <img class="product-img" src="../public/products/<%= e.Imagen%>">
         </div>
     <% }) %>
     </div>

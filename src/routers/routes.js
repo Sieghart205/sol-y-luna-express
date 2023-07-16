@@ -6,5 +6,6 @@ router.get("/",controller.index)
 router.get("/catalogo",controller.catalogo)
 router.get("/producto/:id",controller.productos);
 router.get("/pedir/:id",controller.pedir)
+router.get("/catalogo/:id",controller.catalogoCategoria)
 
 module.exports = router;
