@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../public/css/admin.css">
+<%- include("partials/_header.ejs")%>
+<%data.forEach(e=>{%>
+<form action="/add" method="post" class="form">
+    <input type="hidden" name="Username" value="<%= e.Usuario%>"><br>
+    <input type="hidden" name="Password" value="<%= e.Contraseña%>">
+
+    <input type="text" placeholder="Producto" name="Producto">
+    <input type="text" placeholder="Descripcion" name="Descripcion">
+    <input type="number" placeholder="Precio" name="Precio">
+    <input type="number" placeholder="Precio por mayor" name="PrecioPorMayor">
+    <input type="text" placeholder="Tallas" name="Tallas">
+    <input type="file" name="Imagen">
+    <input type="text" name="Colores" placeholder="Colores">
+    <input type="text" name="Tela" placeholder="Tela">
+    <select name="Categoria" id="">
+        <% categoria.forEach(e=>{ %>
+            <option value="<% e.CategoriaID %>"><%= e.Categoria%></option>
+        <% })%>
+    </select>
+    <button type="submit" class="btn"><span>Agregar</span></button>
+</form>
+<%})%>
+<%- include("partials/_footer.ejs")%>

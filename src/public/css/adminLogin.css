@@ -183,3 +183,17 @@ body{
 .box form input[type="submit"]:active{
     opacity: 0.8;
 }
+
+
+.links{
+    margin: 25px 0 25px 0;
+}
+
+a{
+    color:#fff;
+    text-decoration: none;
+}
+
+a:hover{
+    opacity: 0.8;
+}
