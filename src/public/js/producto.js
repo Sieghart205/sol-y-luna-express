@@ -3,5 +3,5 @@ const comprar = e=>{
 }
 
 const añadir = e=>{
-    location.href="/añadir/"+e;
+    location.href="/add/"+e;
 }

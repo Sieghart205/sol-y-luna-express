@@ -97,7 +97,7 @@ controller.register = (req,res)=>{
         if(err){
             res.json(err);
         }
-        conn.query("INSERT INTO sesiones (usuario,contraseña) VALUES (?,?)",[Username,Password],(users,err)=>{
+        conn.query("INSERT INTO sesiones (Usuario,Contraseña) VALUES (?,?)",[Username,Password],(users,err)=>{
             res.redirect('/');
         });
     })
@@ -121,13 +121,65 @@ controller.carrito = (req,res)=>{
             if(data.length === 0){
                 res.redirect("/");
             }
-            res.render("carrito.ejs")
+            res.render("carrito.ejs",{data:data})
         })
     })
 }
 
 controller.login = (req,res)=>{
     res.render("login.ejs");
+}
+
+controller.carritoGet = (req,res)=>{
+    const id = req.params.id
+    req.getConnection((err,conn)=>{
+        if(err){
+            res.json(err);
+        }
+        conn.query("select * from productos where ProductoID = ?",id,(err,data)=>{
+            if(err){
+                res.json(err)
+            }
+            res.render("add.ejs",{data:data});
+        })
+    })
+}
+
+controller.add = (req,res)=>{
+    const Username = req.body.Username;
+    const Password = req.body.Password;
+    const id = req.body.id;
+
+    req.getConnection((err,conn)=>{
+        if(err){
+            res.json(err);
+        }
+        conn.query("SELECT * FROM sesiones WHERE Usuario = ? AND Contraseña = ?",[Username,Password],(err,data)=>{
+        
+            if(err){
+                res.json(err);
+            }
+
+            if(data.length == 0){
+                res.redirect("/");
+            }
+
+            data.forEach(e => {
+
+                const ProductoID = id;
+                const UsuarioID = e.UsuarioID;
+                const data = [ProductoID,UsuarioID]
+
+                conn.query("INSERT INTO carrito (ProductoID,UsuarioID) values (?,?)",data,(err,carrito)=>{
+                    if(err){
+                        res.json(err)
+                    }
+                    res.redirect("/catalogo");
+                });
+            });
+
+        })
+    })
 }
 
 module.exports = controller;

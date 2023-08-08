@@ -8,6 +8,8 @@ const routes = require("./routers/routes");
 const app = express();
 const port = process.env.PORT || 3000
 
+app.use(express.urlencoded({ extended: true }));
+
 app.use(morgan("dev"));
 app.use(econn(mysql,{
     host:"localhost",
@@ -22,7 +24,7 @@ app.use("/",routes);
 
 app.use("/public",express.static(path.join(__dirname,"public")));
 
-app.use(express.urlencoded({extended:false}));
+
 
 app.listen(port,()=>{
     console.log("app funcionando en el puerto",port);
