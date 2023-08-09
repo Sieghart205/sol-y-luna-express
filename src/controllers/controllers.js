@@ -107,24 +107,45 @@ controller.carritoAdmin = (req,res)=>{
     res.render("carritoAdmin.ejs");
 }
 
-controller.carrito = (req,res)=>{
+controller.carrito = (req, res) => {
     const Username = req.body.Username;
     const Password = req.body.Password;
-    req.getConnection((err,conn)=>{
-        if(err){
-            res.json(err);
+
+    req.getConnection((err, conn) => {
+        if (err) {
+            return res.json(err);
         }
-        conn.query("SELECT * FROM sesiones WHERE Usuario = ? AND contraseña = ?",[Username,Password],(err,data)=>{
-            if(err){
-                res.json(err);
+        conn.query("SELECT * FROM sesiones WHERE Usuario = ? AND contraseña = ?", [Username, Password], (err, sessionData) => {
+            if (err) {
+                return res.json(err);
             }
-            if(data.length === 0){
-                res.redirect("/");
+            if (sessionData.length === 0) {
+                return res.redirect("/");
             }
-            res.render("carrito.ejs",{data:data})
-        })
-    })
-}
+
+            const usuarioID = sessionData[0].UsuarioID;
+            conn.query("SELECT * FROM carrito WHERE UsuarioID=?", usuarioID, (err, carritoData) => {
+                if (err) {
+                    return res.json(err);
+                } else {
+                    const productosIds = carritoData.map(item => item.ProductoID);
+                    conn.query("SELECT * FROM productos WHERE ProductoID IN (?)", [productosIds], (err, productosData) => {
+                        if (err) {
+                            return res.json(err);
+                        }
+                        conn.query("SELECT * FROM categorias",(err,categoriaData)=>{
+                            if(err){
+                                res.json(err);
+                            }
+                            res.render("catalogo.ejs", { data:productosData,categoria:categoriaData });
+                        })
+                    });
+                }
+            });
+        });
+    });
+};
+
 
 controller.login = (req,res)=>{
     res.render("login.ejs");

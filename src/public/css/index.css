@@ -10,6 +10,7 @@ section img{
     flex-grow: 1;
     object-fit: cover;
     opacity: 0.9;
+    cursor: crosshair;
     transition: .3s;
 }
 
